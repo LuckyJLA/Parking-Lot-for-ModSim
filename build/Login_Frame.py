@@ -11,16 +11,16 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\alama\OneDrive\Desktop\Figma to Python 3.0\build\assets\frame4")
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\\Users\\alama\\OneDrive\\Desktop\\Figma to Python 3.0\\build\\assets\\frame4")
 
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-window = Tk()
+'''window = Tk()
 
 window.geometry("1366x768")
-window.configure(bg = "#000000")
+window.configure(bg = "#000000")'''
 
 from BackEnd_Login import logging_in
 from MainMenu_Frame import mainmenu
@@ -28,8 +28,7 @@ from MainMenu_Frame import mainmenu
 def einz(window, username, password):
     mm = logging_in(username.get(), password.get())
     if mm == True:
-        if mainmenu(window):
-            login_frame(window)
+        mainmenu(window)
         
 
 def login_frame(window):
@@ -131,4 +130,4 @@ def login_frame(window):
     window.resizable(False, False)
     window.mainloop()
 
-login_frame(window)
+'''login_frame(window)'''

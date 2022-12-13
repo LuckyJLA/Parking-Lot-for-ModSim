@@ -13,16 +13,16 @@ from BackEnd_parkunpark import go_park
 import datetime as dt
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\alama\OneDrive\Desktop\Figma to Python 3.0\build\assets\frame2")
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\\Users\\alama\\OneDrive\\Desktop\\Figma to Python 3.0\\build\\assets\\frame2")
 
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-window = Tk()
+'''window = Tk()
 
 window.geometry("1366x768")
-window.configure(bg = "#000000")
+window.configure(bg = "#000000")'''
 
 def park_frame(window):
     canvas = Canvas(
@@ -36,10 +36,15 @@ def park_frame(window):
     )
 
 
-    def toBack():
-        go_park(parklotnum.get(),timenow.get())
-        from MainMenu_Frame import mainmenu
-        mainmenu(window)
+    def menu_command(choice):
+        match choice:
+            case 'a':
+                go_park(parklotnum.get(),timenow.get())
+                from MainMenu_Frame import mainmenu
+                mainmenu(window)
+            case 'b':
+                from MainMenu_Frame import mainmenu
+                mainmenu(window)
         
         
     canvas.place(x = 0, y = 0)
@@ -50,7 +55,7 @@ def park_frame(window):
         426.0,
         image=image_image_1
     )
-
+    image_1
     image_image_2 = PhotoImage(
         file=relative_to_assets("image_2.png"))
     image_2 = canvas.create_image(
@@ -73,7 +78,7 @@ def park_frame(window):
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: canvas.destroy(),
+        command=lambda: menu_command('b'),
         relief="flat"
     )
     cancel_button.place(
@@ -89,7 +94,7 @@ def park_frame(window):
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: toBack(),
+        command=lambda: menu_command('a'),
         relief="flat"
     )
     park_button.place(
@@ -411,4 +416,4 @@ def park_frame(window):
     window.resizable(False, False)
     window.mainloop()
 
-park_frame(window)
+'''park_frame(window)'''

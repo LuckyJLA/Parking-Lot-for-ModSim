@@ -9,7 +9,6 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from BackEnd_LotStatus import button_color
-from Park_Frame import park_frame
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -19,10 +18,10 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\alama\OneDrive\Desktop\Figma to Pyth
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-window = Tk()
+'''window = Tk()
 
 window.geometry("1366x768")
-window.configure(bg = "#000000")  
+window.configure(bg = "#000000") ''' 
 
 def mainmenu(window):
     canvas = Canvas(
@@ -382,5 +381,4 @@ def mainmenu(window):
     window.resizable(False, False)
     window.mainloop()
 
-
-mainmenu(window)
+'''mainmenu(window)'''

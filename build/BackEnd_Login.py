@@ -1,5 +1,3 @@
-from MainMenu_Frame import mainmenu
-
 def logging_in(username, password):
 
     print(username)

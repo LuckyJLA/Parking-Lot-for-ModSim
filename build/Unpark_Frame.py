@@ -21,10 +21,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-window = Tk()
+'''window = Tk()
 
 window.geometry("1366x768")
-window.configure(bg = "#000000")
+window.configure(bg = "#000000")'''
 
 def unpark_frame(window):
     canvas = Canvas(
@@ -37,10 +37,15 @@ def unpark_frame(window):
         relief = "ridge"
     )
 
-    def toBack():
-        go_unpark(parklotnum.get(),timenow.get())
-        from MainMenu_Frame import mainmenu
-        mainmenu(window)
+    def menu_command(choice):
+        match choice:
+            case 'a':
+                go_unpark(parklotnum.get(),timenow.get())
+                from MainMenu_Frame import mainmenu
+                mainmenu(window)
+            case 'b':
+                from MainMenu_Frame import mainmenu
+                mainmenu(window)
 
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(
@@ -73,7 +78,7 @@ def unpark_frame(window):
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: canvas.destroy(),
+        command=lambda: menu_command('b'),
         relief="flat"
     )
     cancel_button.place(
@@ -89,7 +94,7 @@ def unpark_frame(window):
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: toBack(),
+        command=lambda: menu_command('a'),
         relief="flat"
     )
     unpark_button.place(
@@ -413,4 +418,4 @@ def unpark_frame(window):
     window.resizable(False, False)
     window.mainloop()
 
-unpark_frame(window)
+'''unpark_frame(window)'''
