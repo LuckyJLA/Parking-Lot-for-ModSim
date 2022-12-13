@@ -337,7 +337,7 @@ def mainmenu(window):
 
     def for_reset():
         park_frame(window)
-        mainmenu()
+        mainmenu(window)
 
     #Park
     button_image_19 = PhotoImage(

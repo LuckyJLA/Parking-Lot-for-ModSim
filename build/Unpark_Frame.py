@@ -8,6 +8,8 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from BackEnd_LotStatus import button_color
+import datetime as dt
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -23,521 +25,386 @@ window = Tk()
 window.geometry("1366x768")
 window.configure(bg = "#000000")
 
+def unpark_frame(window):
+    canvas = Canvas(
+        window,
+        bg = "#000000",
+        height = 768,
+        width = 1366,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
 
-canvas = Canvas(
-    window,
-    bg = "#000000",
-    height = 768,
-    width = 1366,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
-)
+    canvas.place(x = 0, y = 0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        1200.0,
+        426.0,
+        image=image_image_1
+    )
 
-canvas.place(x = 0, y = 0)
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    1200.0,
-    426.0,
-    image=image_image_1
-)
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        517.0,
+        426.0,
+        image=image_image_2
+    )
 
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
-    517.0,
-    426.0,
-    image=image_image_2
-)
+    image_image_3 = PhotoImage(
+        file=relative_to_assets("image_3.png"))
+    image_3 = canvas.create_image(
+        52.0,
+        38.0,
+        image=image_image_3
+    )
 
-image_image_3 = PhotoImage(
-    file=relative_to_assets("image_3.png"))
-image_3 = canvas.create_image(
-    52.0,
-    38.0,
-    image=image_image_3
-)
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    cancel_button = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("cancel"),
+        relief="flat"
+    )
+    cancel_button.place(
+        x=1139.0,
+        y=682.0,
+        width=122.0,
+        height=41.0
+    )
 
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
-    relief="flat"
-)
-button_1.place(
-    x=1139.0,
-    y=682.0,
-    width=122.0,
-    height=41.0
-)
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    unpark_button = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("unpark"),
+        relief="flat"
+    )
+    unpark_button.place(
+        x=1139.0,
+        y=605.0,
+        width=122.0,
+        height=43.0
+    )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=1139.0,
-    y=605.0,
-    width=122.0,
-    height=43.0
-)
+    image_image_4 = PhotoImage(
+        file=relative_to_assets("image_4.png"))
+    image_4 = canvas.create_image(
+        1199.0,
+        336.0,
+        image=image_image_4
+    )
 
-image_image_4 = PhotoImage(
-    file=relative_to_assets("image_4.png"))
-image_4 = canvas.create_image(
-    1199.0,
-    336.0,
-    image=image_image_4
-)
+    image_image_5 = PhotoImage(
+        file=relative_to_assets("image_5.png"))
+    image_5 = canvas.create_image(
+        1201.0,
+        204.0,
+        image=image_image_5
+    )
 
-image_image_5 = PhotoImage(
-    file=relative_to_assets("image_5.png"))
-image_5 = canvas.create_image(
-    1201.0,
-    204.0,
-    image=image_image_5
-)
+    ### fills the textbox
+    def new_info(new_lot):
+        new_time = dt.datetime.now()
+        parklotnum.delete(0, 'end')
+        timenow.delete(0, 'end')
 
-entry_image_1 = PhotoImage(
-    file=relative_to_assets("entry_1.png"))
-entry_bg_1 = canvas.create_image(
-    1200.0,
-    370.0,
-    image=entry_image_1
-)
-entry_1 = Entry(
-    bd=0,
-    bg="#D9D9D9",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_1.place(
-    x=1092.0,
-    y=343.0,
-    width=216.0,
-    height=52.0
-)
+        timenow.insert(0, new_time)
+        parklotnum.insert(0, new_lot)
 
-entry_image_2 = PhotoImage(
-    file=relative_to_assets("entry_2.png"))
-entry_bg_2 = canvas.create_image(
-    1200.0,
-    498.0,
-    image=entry_image_2
-)
-entry_2 = Entry(
-    bd=0,
-    bg="#D9D9D9",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_2.place(
-    x=1092.0,
-    y=471.0,
-    width=216.0,
-    height=52.0
-)
+    entry_image_1 = PhotoImage(
+        file=relative_to_assets("entry_1.png"))
+    entry_bg_1 = canvas.create_image(
+        1200.0,
+        370.0,
+        image=entry_image_1
+    )
+    parklotnum = Entry(canvas, font="Arial 20",
+        bd=0,
+        bg="#D9D9D9",
+        fg="Blue",
+        highlightthickness=0,
+        justify='center'
+    )
+    parklotnum.place(
+        x=1092.0,
+        y=343.0,
+        width=216.0,
+        height=52.0
+    )
 
-canvas.create_text(
-    1093.0,
-    310.0,
-    anchor="nw",
-    text="Parking Lot Number",
-    fill="#000000",
-    font=("Inter ExtraBold", 20 * -1)
-)
+    entry_image_2 = PhotoImage(
+        file=relative_to_assets("entry_2.png"))
+    entry_bg_2 = canvas.create_image(
+        1200.0,
+        498.0,
+        image=entry_image_2
+    )
+    timenow = Entry(canvas, font="Arial 17",
+        bd=0,
+        bg="#D9D9D9",
+        fg="Red",
+        highlightthickness=0,
+        justify='center'
+    )
+    timenow.place(
+        x=1092.0,
+        y=471.0,
+        width=216.0,
+        height=52.0
+    )
 
-canvas.create_text(
-    1093.0,
-    438.0,
-    anchor="nw",
-    text="Timestamp",
-    fill="#000000",
-    font=("Inter ExtraBold", 20 * -1)
-)
+    canvas.create_text(
+        1093.0,
+        310.0,
+        anchor="nw",
+        text="Parking Lot Number",
+        fill="#000000",
+        font=("Inter ExtraBold", 20 * -1)
+    )
 
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
-    relief="flat"
-)
-button_3.place(
-    x=748.0,
-    y=640.0,
-    width=237.0,
-    height=96.0
-)
+    canvas.create_text(
+        1093.0,
+        438.0,
+        anchor="nw",
+        text="Timestamp",
+        fill="#000000",
+        font=("Inter ExtraBold", 20 * -1)
+    )
 
-canvas.create_text(
-    833.0,
-    664.0,
-    anchor="nw",
-    text="305",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
 
-button_image_4 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
-button_4 = Button(
-    image=button_image_4,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
-    relief="flat"
-)
-button_4.place(
-    x=748.0,
-    y=509.0,
-    width=237.0,
-    height=96.0
-)
+    ###BUTTONS
 
-canvas.create_text(
-    832.0,
-    533.0,
-    anchor="nw",
-    text="304",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_1 = Button(canvas,
+            text='305', 
+            font= ('Arial 40'), 
+            background=button_color(305),
+            command=lambda: new_info(305),
+            relief="flat"
+        )
+    button_1.place(
+        x=748.0,
+        y=640.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_5 = PhotoImage(
-    file=relative_to_assets("button_5.png"))
-button_5 = Button(
-    image=button_image_5,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_5 clicked"),
-    relief="flat"
-)
-button_5.place(
-    x=748.0,
-    y=378.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    832.0,
-    402.0,
-    anchor="nw",
-    text="303",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_2 = Button(canvas,
+        text='304', 
+        font= ('Arial 40'), 
+        background=button_color(304),
+        command=lambda: new_info(304),
+        relief="flat"
+    )
+    button_2.place(
+        x=748.0,
+        y=509.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_6 = PhotoImage(
-    file=relative_to_assets("button_6.png"))
-button_6 = Button(
-    image=button_image_6,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_6 clicked"),
-    relief="flat"
-)
-button_6.place(
-    x=748.0,
-    y=247.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    832.0,
-    271.0,
-    anchor="nw",
-    text="302",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_3 = Button(canvas,
+            text='303', 
+            font= ('Arial 40'), 
+            background=button_color(303),
+            command=lambda: new_info(303),
+            relief="flat"
+        )
+    button_3.place(
+        x=748.0,
+        y=378.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_7 = PhotoImage(
-    file=relative_to_assets("button_7.png"))
-button_7 = Button(
-    image=button_image_7,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_7 clicked"),
-    relief="flat"
-)
-button_7.place(
-    x=748.0,
-    y=116.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    832.0,
-    140.0,
-    anchor="nw",
-    text="301",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_4 = Button(canvas,
+            text='302', 
+            font= ('Arial 40'), 
+            background=button_color(302),
+            command=lambda: new_info(302),
+            relief="flat"
+        )
+    button_4.place(
+        x=748.0,
+        y=247.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_8 = PhotoImage(
-    file=relative_to_assets("button_8.png"))
-button_8 = Button(
-    image=button_image_8,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_8 clicked"),
-    relief="flat"
-)
-button_8.place(
-    x=398.0,
-    y=640.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    483.0,
-    664.0,
-    anchor="nw",
-    text="205",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_5 = Button(canvas,
+        text='301', 
+        font= ('Arial 40'), 
+        background=button_color(301),
+        command=lambda: new_info(301),
+        relief="flat"
+    )
+    button_5.place(
+        x=748.0,
+        y=116.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_9 = PhotoImage(
-    file=relative_to_assets("button_9.png"))
-button_9 = Button(
-    image=button_image_9,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_9 clicked"),
-    relief="flat"
-)
-button_9.place(
-    x=398.0,
-    y=509.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    482.0,
-    533.0,
-    anchor="nw",
-    text="204",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_6 = Button(canvas,
+        text='205', 
+        font= ('Arial 40'), 
+        background=button_color(205),
+        command=lambda: new_info(205),
+        relief="flat"
+    )
+    button_6.place(
+        x=398.0,
+        y=640.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_10 = PhotoImage(
-    file=relative_to_assets("button_10.png"))
-button_10 = Button(
-    image=button_image_10,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_10 clicked"),
-    relief="flat"
-)
-button_10.place(
-    x=398.0,
-    y=378.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    482.0,
-    402.0,
-    anchor="nw",
-    text="203",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_7 = Button(canvas,
+        text='204', 
+        font= ('Arial 40'), 
+        background=button_color(204),
+        command=lambda: new_info(204),
+        relief="flat"
+    )
+    button_7.place(
+        x=398.0,
+        y=509.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_11 = PhotoImage(
-    file=relative_to_assets("button_11.png"))
-button_11 = Button(
-    image=button_image_11,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_11 clicked"),
-    relief="flat"
-)
-button_11.place(
-    x=398.0,
-    y=247.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    482.0,
-    271.0,
-    anchor="nw",
-    text="202",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_8 = Button(canvas,
+        text='203', 
+        font= ('Arial 40'), 
+        background=button_color(203),
+        command=lambda: new_info(203),
+        relief="flat"
+    )
+    button_8.place(
+        x=398.0,
+        y=378.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_12 = PhotoImage(
-    file=relative_to_assets("button_12.png"))
-button_12 = Button(
-    image=button_image_12,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_12 clicked"),
-    relief="flat"
-)
-button_12.place(
-    x=398.0,
-    y=116.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    482.0,
-    140.0,
-    anchor="nw",
-    text="201",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_9 = Button(canvas,
+        text='202', 
+        font= ('Arial 40'), 
+        background=button_color(202),
+        command=lambda: new_info(202),
+        relief="flat"
+    )
+    button_9.place(
+        x=398.0,
+        y=247.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_13 = PhotoImage(
-    file=relative_to_assets("button_13.png"))
-button_13 = Button(
-    image=button_image_13,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_13 clicked"),
-    relief="flat"
-)
-button_13.place(
-    x=49.0,
-    y=640.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    137.0,
-    664.0,
-    anchor="nw",
-    text="105",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_10 = Button(canvas,
+        text='201', 
+        font= ('Arial 40'), 
+        background=button_color(201),
+        command=lambda: new_info(201),
+        relief="flat"
+    )
+    button_10.place(
+        x=398.0,
+        y=116.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_14 = PhotoImage(
-    file=relative_to_assets("button_14.png"))
-button_14 = Button(
-    image=button_image_14,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_14 clicked"),
-    relief="flat"
-)
-button_14.place(
-    x=49.0,
-    y=509.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    136.0,
-    533.0,
-    anchor="nw",
-    text="104",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_11 = Button(canvas,
+        text='105', 
+        font= ('Arial 40'), 
+        background=button_color(105),
+        command=lambda: new_info(105),
+        relief="flat"
+    )
+    button_11.place(
+        x=49.0,
+        y=640.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_15 = PhotoImage(
-    file=relative_to_assets("button_15.png"))
-button_15 = Button(
-    image=button_image_15,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_15 clicked"),
-    relief="flat"
-)
-button_15.place(
-    x=49.0,
-    y=378.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    136.0,
-    402.0,
-    anchor="nw",
-    text="103",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_12 = Button(canvas,
+        text='104', 
+        font= ('Arial 40'), 
+        background=button_color(104),
+        command=lambda: new_info(104),
+        relief="flat"
+        )
+    button_12.place(
+        x=49.0,
+        y=509.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_16 = PhotoImage(
-    file=relative_to_assets("button_16.png"))
-button_16 = Button(
-    image=button_image_16,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_16 clicked"),
-    relief="flat"
-)
-button_16.place(
-    x=49.0,
-    y=247.0,
-    width=237.0,
-    height=96.0
-)
 
-canvas.create_text(
-    136.0,
-    271.0,
-    anchor="nw",
-    text="102",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
+    button_13 = Button(canvas,
+        text='103', 
+        font= ('Arial 40'), 
+        background=button_color(103),
+        command=lambda: new_info(103),
+        relief="flat"
+    )
+    button_13.place(
+        x=49.0,
+        y=378.0,
+        width=237.0,
+        height=96.0
+    )
 
-button_image_17 = PhotoImage(
-    file=relative_to_assets("button_17.png"))
-button_17 = Button(
-    image=button_image_17,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_17 clicked"),
-    relief="flat"
-)
-button_17.place(
-    x=49.0,
-    y=116.0,
-    width=237.0,
-    height=96.0
-)
+    button_14 = Button(canvas,
+        text='102', 
+        font= ('Arial 40'), 
+        background=button_color(102),
+        command=lambda: new_info(102),
+        relief="flat"
+    )
+    button_14.place(
+        x=49.0,
+        y=247.0,
+        width=237.0,
+        height=96.0
+    )
 
-canvas.create_text(
-    136.0,
-    140.0,
-    anchor="nw",
-    text="101",
-    fill="#000000",
-    font=("Inter", 40 * -1)
-)
-window.resizable(False, False)
-window.mainloop()
+
+    button_15 = Button(canvas,
+        text='101', 
+        font= ('Arial 40'), 
+        background=button_color(101),
+        command=lambda: new_info(101),
+        relief="flat"
+    )
+    button_15.place(
+        x=49.0,
+        y=116.0,
+        width=237.0,
+        height=96.0
+    )
+
+    window.resizable(False, False)
+    window.mainloop()
+
+unpark_frame(window)

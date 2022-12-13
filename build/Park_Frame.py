@@ -9,7 +9,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from BackEnd_LotStatus import button_color
-from BackEnd_parkunpark import go_park, go_unpark
+from BackEnd_parkunpark import go_park
 import datetime as dt
 
 OUTPUT_PATH = Path(__file__).parent
@@ -34,7 +34,11 @@ def park_frame(window):
 
     def toBack():
         go_park(parklotnum.get(),timenow.get())
-        canvas.destroy
+        from MainMenu_Frame import mainmenu
+        mainmenu(window)
+        
+        
+        
 
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(

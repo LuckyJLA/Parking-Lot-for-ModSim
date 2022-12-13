@@ -6,6 +6,8 @@ window = Tk()
 window.geometry("1366x768")
 window.configure(bg = "#000000")
 
+
+
 def main():
     window = Tk()
 
