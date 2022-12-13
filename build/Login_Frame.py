@@ -66,7 +66,7 @@ def login_frame(window):
         562.0,
         image=entry_image_1
     )
-    password = Entry(
+    password = Entry(font='Arial 16',
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -95,7 +95,7 @@ def login_frame(window):
         473.0,
         image=entry_image_2
     )
-    username = Entry(
+    username = Entry(font='Arial 16',
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
