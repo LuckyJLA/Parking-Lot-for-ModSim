@@ -19,6 +19,10 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\alama\OneDrive\Desktop\Figma to Pyth
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+window = Tk()
+
+window.geometry("1366x768")
+window.configure(bg = "#000000")
 
 def park_frame(window):
     canvas = Canvas(
@@ -38,12 +42,11 @@ def park_frame(window):
         mainmenu(window)
         
         
-        
-
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(
         file=relative_to_assets("image_1.png"))
-    image_1 = canvas.create_image(1200.0,
+    image_1 = canvas.create_image(
+        1200.0,
         426.0,
         image=image_image_1
     )
@@ -407,3 +410,5 @@ def park_frame(window):
 
     window.resizable(False, False)
     window.mainloop()
+
+park_frame(window)

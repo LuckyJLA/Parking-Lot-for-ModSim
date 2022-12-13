@@ -23,109 +23,134 @@ window = Tk()
 window.geometry("1366x768")
 window.configure(bg = "#000000")
 
+def log_frame(window):
+    canvas = Canvas(
+        window,
+        bg = "#000000",
+        height = 768,
+        width = 1366,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
 
-canvas = Canvas(
-    window,
-    bg = "#000000",
-    height = 768,
-    width = 1366,
-    bd = 0,
-    highlightthickness = 0,
-    relief = "ridge"
-)
+    def menu_commands(choice):
+        match choice:
+            case 'a': 
+                from MainMenu_Frame import mainmenu
+                mainmenu(window)
+            case 'b':
+                from Park_Frame import park_frame
+                park_frame(window)
+            case 'c':
+                from Unpark_Frame import unpark_frame
+                unpark_frame(window)
+            case 'd':
+                from Login_Frame import login_frame
+                login_frame(window)
 
-canvas.place(x = 0, y = 0)
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    1200.0,
-    426.0,
-    image=image_image_1
-)
+    canvas.place(x = 0, y = 0)
+    image_image_1 = PhotoImage(
+        file=relative_to_assets("image_1.png"))
+    image_1 = canvas.create_image(
+        1200.0,
+        426.0,
+        image=image_image_1
+    )
 
-canvas.create_text(
-    1081.0,
-    125.0,
-    anchor="nw",
-    text="MAIN MENU",
-    fill="#FFFFFF",
-    font=("Inter ExtraBold", 40 * -1)
-)
-
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
-    relief="flat"
-)
-button_1.place(
-    x=1094.0,
-    y=612.0,
-    width=211.0,
-    height=86.0
-)
-
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=1094.0,
-    y=476.0,
-    width=211.0,
-    height=86.0
-)
-
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
-    relief="flat"
-)
-button_3.place(
-    x=1094.0,
-    y=340.0,
-    width=211.0,
-    height=86.0
-)
-
-button_image_4 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
-button_4 = Button(
-    image=button_image_4,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
-    relief="flat"
-)
-button_4.place(
-    x=1094.0,
-    y=204.0,
-    width=211.0,
-    height=86.0
-)
-
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
-    52.0,
-    38.0,
-    image=image_image_2
-)
+    canvas.create_text(
+        1081.0,
+        125.0,
+        anchor="nw",
+        text="MAIN MENU",
+        fill="#FFFFFF",
+        font=("Inter ExtraBold", 40 * -1)
+    )
 
 
+    ###LOGOUT
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: menu_commands('d'),
+        relief="flat"
+    )
+    button_1.place(
+        x=1094.0,
+        y=612.0,
+        width=211.0,
+        height=86.0
+    )
 
 
-window.resizable(False, False)
-window.mainloop()
+    ###UNPARK
+    button_image_2 = PhotoImage(
+        file=relative_to_assets("button_2.png"))
+    button_2 = Button(
+        image=button_image_2,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: menu_commands('c'),
+        relief="flat"
+    )
+    button_2.place(
+        x=1094.0,
+        y=476.0,
+        width=211.0,
+        height=86.0
+    )
+
+
+    ###PARK
+    button_image_3 = PhotoImage(
+        file=relative_to_assets("button_3.png"))
+    button_3 = Button(
+        image=button_image_3,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: menu_commands('b'),
+        relief="flat"
+    )
+    button_3.place(
+        x=1094.0,
+        y=340.0,
+        width=211.0,
+        height=86.0
+    )
+
+
+    ###HOME
+    button_image_4 = PhotoImage(
+        file=relative_to_assets("button_4.png"))
+    button_4 = Button(
+        image=button_image_4,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: menu_commands('a'),
+        relief="flat"
+    )
+    button_4.place(
+        x=1094.0,
+        y=204.0,
+        width=211.0,
+        height=86.0
+    )
+
+    image_image_2 = PhotoImage(
+        file=relative_to_assets("image_2.png"))
+    image_2 = canvas.create_image(
+        52.0,
+        38.0,
+        image=image_image_2
+    )
+
+
+
+
+    window.resizable(False, False)
+    window.mainloop()
+
+log_frame(window)

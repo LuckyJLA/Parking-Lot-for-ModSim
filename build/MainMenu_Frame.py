@@ -18,7 +18,11 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\alama\OneDrive\Desktop\Figma to Pyth
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
-    
+
+window = Tk()
+
+window.geometry("1366x768")
+window.configure(bg = "#000000")  
 
 def mainmenu(window):
     canvas = Canvas(
@@ -281,6 +285,21 @@ def mainmenu(window):
         image=image_image_3
     )
 
+    def menu_commands(choice):
+        match choice:
+            case 'a':
+                from Park_Frame import park_frame
+                park_frame(window)
+            case 'b':
+                from Unpark_Frame import unpark_frame
+                unpark_frame(window)
+            case 'c':
+                from Logs_Frame import log_frame
+                log_frame(window)
+            case 'd':
+                from Login_Frame import login_frame
+                login_frame(window)
+
 
     #Logout
     button_image_16 = PhotoImage(
@@ -289,7 +308,7 @@ def mainmenu(window):
         image=button_image_16,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: canvas.destroy(),
+        command=lambda: menu_commands('d'),
         relief="flat"
     )
     button_16.place(
@@ -307,7 +326,7 @@ def mainmenu(window):
         image=button_image_17,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_17 clicked"),
+        command=lambda: menu_commands('c'),
         relief="flat"
     )
     button_17.place(
@@ -325,7 +344,7 @@ def mainmenu(window):
         image=button_image_18,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_18 clicked"),
+        command=lambda: menu_commands('b'),
         relief="flat"
     )
     button_18.place(
@@ -335,10 +354,6 @@ def mainmenu(window):
         height=86.0
     )
 
-    def for_reset():
-        park_frame(window)
-        mainmenu(window)
-
     #Park
     button_image_19 = PhotoImage(
         file=relative_to_assets("button_19.png"))
@@ -346,7 +361,7 @@ def mainmenu(window):
         image=button_image_19,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: for_reset(),
+        command=lambda: menu_commands('a'),
         relief="flat"
     )
     button_19.place(
@@ -366,3 +381,6 @@ def mainmenu(window):
     )
     window.resizable(False, False)
     window.mainloop()
+
+
+mainmenu(window)

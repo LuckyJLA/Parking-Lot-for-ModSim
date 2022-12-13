@@ -9,6 +9,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from BackEnd_LotStatus import button_color
+from BackEnd_parkunpark import go_unpark
 import datetime as dt
 
 
@@ -35,6 +36,11 @@ def unpark_frame(window):
         highlightthickness = 0,
         relief = "ridge"
     )
+
+    def toBack():
+        go_unpark(parklotnum.get(),timenow.get())
+        from MainMenu_Frame import mainmenu
+        mainmenu(window)
 
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(
@@ -67,7 +73,7 @@ def unpark_frame(window):
         image=button_image_1,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("cancel"),
+        command=lambda: canvas.destroy(),
         relief="flat"
     )
     cancel_button.place(
@@ -83,7 +89,7 @@ def unpark_frame(window):
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("unpark"),
+        command=lambda: toBack(),
         relief="flat"
     )
     unpark_button.place(
