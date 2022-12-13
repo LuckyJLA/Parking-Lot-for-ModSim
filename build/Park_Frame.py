@@ -20,11 +20,6 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-window = Tk()
-
-window.geometry("1366x768")
-window.configure(bg = "#000000")
-
 def park_frame(window):
     canvas = Canvas(
         window,
@@ -36,11 +31,15 @@ def park_frame(window):
         relief = "ridge"
     )
 
+
+    def toBack():
+        go_park(parklotnum.get(),timenow.get())
+        canvas.destroy
+
     canvas.place(x = 0, y = 0)
     image_image_1 = PhotoImage(
         file=relative_to_assets("image_1.png"))
-    image_1 = canvas.create_image(
-        1200.0,
+    image_1 = canvas.create_image(1200.0,
         426.0,
         image=image_image_1
     )
@@ -83,7 +82,7 @@ def park_frame(window):
         image=button_image_2,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("park clicked"),
+        command=lambda: toBack(),
         relief="flat"
     )
     park_button.place(
@@ -119,7 +118,7 @@ def park_frame(window):
         parklotnum.insert(0, new_lot)
 
     
-    parklotnum = Entry(font="Arial 20",
+    parklotnum = Entry(canvas, font="Arial 20",
         bd=0,
         bg="#D9D9D9",
         fg="Blue",
@@ -134,7 +133,7 @@ def park_frame(window):
     )
 
     
-    timenow = Entry(font='Arial 17',
+    timenow = Entry(canvas, font='Arial 17',
         bd=0,
         bg="#D9D9D9",
         fg="Green",
@@ -404,5 +403,3 @@ def park_frame(window):
 
     window.resizable(False, False)
     window.mainloop()
-
-park_frame(window)

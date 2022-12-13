@@ -9,6 +9,7 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from BackEnd_LotStatus import button_color
+from Park_Frame import park_frame
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -334,6 +335,9 @@ def mainmenu(window):
         height=86.0
     )
 
+    def for_reset():
+        park_frame(window)
+        mainmenu()
 
     #Park
     button_image_19 = PhotoImage(
@@ -342,7 +346,7 @@ def mainmenu(window):
         image=button_image_19,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: print("button_19 clicked"),
+        command=lambda: for_reset(),
         relief="flat"
     )
     button_19.place(
