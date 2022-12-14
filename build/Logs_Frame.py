@@ -18,10 +18,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-'''window = Tk()
+window = Tk()
 
 window.geometry("1366x768")
-window.configure(bg = "#000000")'''
+window.configure(bg = "#000000")
 
 def log_frame(window):
     canvas = Canvas(
@@ -153,4 +153,4 @@ def log_frame(window):
     window.resizable(False, False)
     window.mainloop()
 
-'''log_frame(window)'''
+log_frame(window)
