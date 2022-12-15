@@ -64,14 +64,6 @@ def park_frame(window):
         image=image_image_2
     )
 
-    image_image_3 = PhotoImage(
-        file=relative_to_assets("image_3.png"))
-    image_3 = canvas.create_image(
-        52.0,
-        38.0,
-        image=image_image_3
-    )
-
     button_image_1 = PhotoImage(
         file=relative_to_assets("button_1.png"))
     cancel_button = Button(canvas,
@@ -405,15 +397,8 @@ def park_frame(window):
         height=96.0
     )
 
-    image_image_3 = PhotoImage(
-        file=relative_to_assets("image_3.png"))
-    image_3 = canvas.create_image(
-        52.0,
-        38.0,
-        image=image_image_3
-    )
 
-    window.resizable(False, False)
+    window.resizable(True, True)
     window.mainloop()
 
 '''park_frame(window)'''

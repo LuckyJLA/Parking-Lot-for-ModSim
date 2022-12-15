@@ -8,6 +8,7 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from PIL import Image,ImageTk
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -119,15 +120,17 @@ def login_frame(window):
 
 
     image_image_2 = PhotoImage(
-        file=relative_to_assets("image_2.png"))
+        file=relative_to_assets("PUParkingLogo.png"))
     image_2 = canvas.create_image(
-        690.0,
-        275.0,
+        683.0,
+        200.0,
         image=image_image_2
     )
+    
 
 
-    window.resizable(False, False)
+
+    window.resizable(True, True)
     window.mainloop()
 
 '''login_frame(window)'''

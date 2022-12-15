@@ -274,16 +274,6 @@ def mainmenu(window):
         height=96.0
     )
 
-
-
-    image_image_3 = PhotoImage(
-        file=relative_to_assets("image_3.png"))
-    image_3 = canvas.create_image(
-        52.0,
-        38.0,
-        image=image_image_3
-    )
-
     def menu_commands(choice):
         match choice:
             case 'a':
@@ -378,7 +368,8 @@ def mainmenu(window):
         fill="#FFFFFF",
         font=("Inter ExtraBold", 40 * -1)
     )
-    window.resizable(False, False)
+    
+    window.resizable(True, True)
     window.mainloop()
 
 '''mainmenu(window)'''

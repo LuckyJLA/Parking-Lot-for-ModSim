@@ -39,18 +39,22 @@ def log_frame(window):
         match choice:
             case 'a': 
                 from MainMenu_Frame import mainmenu
+                canvas.destroy()
                 Tframe.destroy()
                 mainmenu(window)
             case 'b':
                 from Park_Frame import park_frame
+                canvas.destroy()
                 Tframe.destroy()
                 park_frame(window)
             case 'c':
                 from Unpark_Frame import unpark_frame
+                canvas.destroy()
                 Tframe.destroy()
                 unpark_frame(window)
             case 'd':
                 from Login_Frame import login_frame
+                canvas.destroy()
                 Tframe.destroy()
                 login_frame(window)
 
@@ -144,13 +148,6 @@ def log_frame(window):
         height=86.0
     )
 
-    image_image_2 = PhotoImage(
-        file=relative_to_assets("image_2.png"))
-    image_2 = canvas.create_image(
-        52.0,
-        38.0,
-        image=image_image_2
-    )
 
     ###Logs Table
     Tframe = Frame(window, height=684, width=1034)
@@ -196,7 +193,7 @@ def log_frame(window):
             table.insert("", 0, values=(timestamp, lot_num, in_out, parked_counter))
 
     
-    window.resizable(False, False)
+    window.resizable(True, True)
     window.mainloop()
 
 
