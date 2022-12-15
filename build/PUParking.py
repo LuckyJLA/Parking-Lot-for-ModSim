@@ -3,6 +3,7 @@ from tkinter import *
 def main():
     window = Tk()
     window.attributes('-fullscreen', True)
+    
 
     ''''window.geometry("1366x768")'''
     w, h = window.winfo_screenwidth(), window.winfo_screenheight()
