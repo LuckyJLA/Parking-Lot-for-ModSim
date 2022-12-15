@@ -183,7 +183,7 @@ def log_frame(window):
     table.heading('Parking', text="Parking", anchor=CENTER)
     table.heading('Counter', text="Counter", anchor=CENTER)
 
-    with open('C:\\Users\\alama\\OneDrive\\Desktop\\ModSim Parking\\ParkingLogs.csv') as f:
+    with open('C:\\Users\\alama\\OneDrive\\Desktop\\Figma to Python 3.0\\ParkingLogs.csv') as f:
         reader = csv.DictReader(f, delimiter=',')
         for row in reader:
             timestamp = row['timestamp']
